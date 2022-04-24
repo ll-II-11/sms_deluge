@@ -1,0 +1,8 @@
+﻿################################################################################
+# 此 .gitignore 文件已由 Microsoft(R) Visual Studio 自动创建。
+################################################################################
+
+/.vs/sms_deluge/v16
+/packages/Newtonsoft.Json.13.0.1
+/SmsDeluge.WinForm/bin
+/SmsDeluge.WinForm/obj/Debug
