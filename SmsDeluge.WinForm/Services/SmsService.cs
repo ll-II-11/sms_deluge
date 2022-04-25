@@ -2,6 +2,7 @@
 using SmsDeluge.WinForm.Models;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -15,18 +16,19 @@ namespace SmsDeluge.WinForm.Services
     public class SmsService
     {
         private static SettingModel settingModel;
-        public static bool isRun = false;
 
+        public static bool IsRun { get; set; }
+        public string Token { get; private set; }
         public string Mobile { get; private set; }
         public int CurrentSendCount { get; private set; }
         public int NeedSendCount { get; private set; }
         public TextBox TbMessage { get; private set; }
         public GroupBox GbTask { get; private set; }
-        public int LiveTaskCount { get; private set; }
 
         public SmsService()
         {
             settingModel = new SettingModel();
+            Token  = Guid.NewGuid().ToString("N");
         }
 
         public async Task Send(string mobile, int needSendCount, TextBox tbMessage, GroupBox gbTask)
@@ -44,12 +46,11 @@ namespace SmsDeluge.WinForm.Services
 
         private bool IsNewTask()
         {
-            int currentLableCount = 0;
+            var liveTaskCount = 4;
             GbTask.Invoke(new Action(() => {
-                currentLableCount = GbTask.Controls.Find($"lbl{Mobile}", true).Length;
-                LiveTaskCount = GbTask.Controls.Count;
+                liveTaskCount = GbTask.Controls.Count;
             }));
-            if (LiveTaskCount >= 4 || currentLableCount >= 1)
+            if (liveTaskCount >= 4)
             {
                 return false;
             }
@@ -69,7 +70,7 @@ namespace SmsDeluge.WinForm.Services
             {
                 foreach (var setting in settings)
                 {
-                    if (!isRun)
+                    if (!IsRun)
                     {
                         CurrentSendCount = NeedSendCount;
                         CalcTask();
@@ -78,24 +79,6 @@ namespace SmsDeluge.WinForm.Services
                     var url = new Uri(setting.Url);
                     var method = new HttpMethod(setting.Method);
                     var response = await url.SendHttpRequestAsync(method, setting.Header, setting.Content);
-                    //if (response == null)
-                    //{
-                    //    TbMessage.BeginInvoke(new Action(() => {
-                    //        TbMessage.AppendText($"<{DateTime.Now.ToString("dd-HH:mm:ss")}>接口失效<{url.Host}>\r\n");
-                    //    }));
-                    //    continue;
-                    //}
-                    //if (!string.IsNullOrWhiteSpace(setting.ResultRegex))
-                    //{
-                    //    var regex = new Regex(setting.ResultRegex);
-                    //    if (!regex.IsMatch(response))
-                    //    {
-                    //        TbMessage.BeginInvoke(new Action(() => {
-                    //            TbMessage.AppendText($"<{DateTime.Now.ToString("dd-HH:mm:ss")}>响应数据与正则不匹配<{url.Host}>\r\n");
-                    //        }));
-                    //        continue;
-                    //    }
-                    //}
                     TbMessage.BeginInvoke(new Action(() => {
                         TbMessage.AppendText($"<{DateTime.Now.ToString("dd-HH:mm:ss")}>发送请求<{setting.Url}>响应数据<{response}>\r\n");
                     }));
@@ -103,9 +86,6 @@ namespace SmsDeluge.WinForm.Services
                     CalcTask();
                     if (CurrentSendCount >= NeedSendCount)
                     {
-                        TbMessage.BeginInvoke(new Action(() => {
-                            TbMessage.AppendText($"<{DateTime.Now.ToString("dd-HH:mm:ss")}>请求全部发送完成\r\n");
-                        }));
                         CalcTask();
                         return;
                     }
@@ -116,7 +96,7 @@ namespace SmsDeluge.WinForm.Services
         private void CalcTask()
         {
             GbTask.Invoke(new Action(() => {
-                var lables = GbTask.Controls.Find($"lbl{Mobile}", true);
+                var lables = GbTask.Controls.Find($"lbl_{Token}", true);
                 if (lables.Length >= 1)
                 {
                     var lable = (Label)lables[0];
@@ -131,11 +111,27 @@ namespace SmsDeluge.WinForm.Services
                 }
                 else
                 {
+                    if (CurrentSendCount >= NeedSendCount)
+                    {
+                        return;
+                    }
                     var lable = new Label();
-                    lable.Name = $"lbl{Mobile}";
+                    lable.Name = $"lbl_{Token}";
                     lable.Text = $"{CurrentSendCount}-{Mobile}";
                     lable.Height = 12;
-                    lable.Location = new System.Drawing.Point(LiveTaskCount * 100 + 15, 17);
+                    var points = new List<Point>();
+                    points.Add(new Point(15, 17));
+                    points.Add(new Point(115, 17));
+                    points.Add(new Point(215, 17));
+                    points.Add(new Point(315, 17));
+                    foreach (Control control in GbTask.Controls)
+                    {
+                        if (points.Contains(control.Location))
+                        {
+                            points.Remove(control.Location);
+                        }
+                    }
+                    lable.Location = points[0];
                     GbTask.Controls.Add(lable);
                 }
             }));

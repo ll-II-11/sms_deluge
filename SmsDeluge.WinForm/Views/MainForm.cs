@@ -33,7 +33,7 @@ namespace SmsDeluge.WinForm.Views
                 this.tbMessage.AppendText("发送次数错误\r\n");
                 return;
             }
-            SmsService.isRun = true;
+            SmsService.IsRun = true;
             Task.Run(async ()=> {
                 await new SmsService().Send(mobile, count, this.tbMessage, this.gbTask);
             });
@@ -41,7 +41,7 @@ namespace SmsDeluge.WinForm.Views
 
         private void btnStop_Click(object sender, EventArgs e)
         {
-            SmsService.isRun = false;
+            SmsService.IsRun = false;
         }
     }
 }

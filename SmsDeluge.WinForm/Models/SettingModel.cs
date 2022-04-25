@@ -20,7 +20,6 @@ namespace SmsDeluge.WinForm.Models
         public Dictionary<string, string> Header { get; set; }
         public JToken Data { get; set; }
         public string Content { get; set; }
-        public string ResultRegex { get; set; }
 
         public async Task<List<SettingModel>> GetSettingsAsync(string mobile)
         {
