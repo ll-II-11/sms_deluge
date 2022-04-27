@@ -1,5 +1,6 @@
 ﻿using SmsDeluge.WinForm.Extensions;
 using SmsDeluge.WinForm.Models;
+using Sunny.UI;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -22,8 +23,9 @@ namespace SmsDeluge.WinForm.Services
         public string Mobile { get; private set; }
         public int CurrentSendCount { get; private set; }
         public int NeedSendCount { get; private set; }
-        public TextBox TbMessage { get; private set; }
-        public GroupBox GbTask { get; private set; }
+        public int SendInterval { get; private set; }
+        public UITextBox TbMessage { get; private set; }
+        public UIFlowLayoutPanel GbTask { get; private set; }
 
         public SmsService()
         {
@@ -31,30 +33,14 @@ namespace SmsDeluge.WinForm.Services
             Token  = Guid.NewGuid().ToString("N");
         }
 
-        public async Task Send(string mobile, int needSendCount, TextBox tbMessage, GroupBox gbTask)
+        public async Task Send(string mobile, int needSendCount, int sendInterval, UITextBox tbMessage, UIFlowLayoutPanel gbTask)
         {
             Mobile = mobile;
             NeedSendCount = needSendCount;
+            SendInterval = sendInterval;
             TbMessage = tbMessage;
             GbTask = gbTask;
-            if (!IsNewTask())
-            {
-                return;
-            }
             await StartTask();
-        }
-
-        private bool IsNewTask()
-        {
-            var liveTaskCount = 4;
-            GbTask.Invoke(new Action(() => {
-                liveTaskCount = GbTask.Controls.Count;
-            }));
-            if (liveTaskCount >= 4)
-            {
-                return false;
-            }
-            return true;
         }
 
         private async Task StartTask()
@@ -89,6 +75,7 @@ namespace SmsDeluge.WinForm.Services
                         CalcTask();
                         return;
                     }
+                    Thread.Sleep(SendInterval);
                 }
             }
         }
@@ -96,13 +83,12 @@ namespace SmsDeluge.WinForm.Services
         private void CalcTask()
         {
             GbTask.Invoke(new Action(() => {
-                var lables = GbTask.Controls.Find($"lbl_{Token}", true);
-                if (lables.Length >= 1)
+                var lable = GbTask.GetControl<Label>($"lbl_{Token}");
+                if (lable != null)
                 {
-                    var lable = (Label)lables[0];
                     if (CurrentSendCount >= NeedSendCount)
                     {
-                        GbTask.Controls.Remove(lable);
+                        GbTask.Remove(lable);
                     }
                     else
                     {
@@ -115,23 +101,11 @@ namespace SmsDeluge.WinForm.Services
                     {
                         return;
                     }
-                    var lable = new Label();
+                    lable = new Label();
                     lable.Name = $"lbl_{Token}";
                     lable.Text = $"{CurrentSendCount}-{Mobile}";
-                    lable.Height = 12;
-                    var points = new List<Point>();
-                    points.Add(new Point(15, 17));
-                    points.Add(new Point(115, 17));
-                    points.Add(new Point(215, 17));
-                    points.Add(new Point(315, 17));
-                    foreach (Control control in GbTask.Controls)
-                    {
-                        if (points.Contains(control.Location))
-                        {
-                            points.Remove(control.Location);
-                        }
-                    }
-                    lable.Location = points[0];
+                    lable.Height = 20;
+                    lable.Font = new Font("微软雅黑", 9);
                     GbTask.Controls.Add(lable);
                 }
             }));

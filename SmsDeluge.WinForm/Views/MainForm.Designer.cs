@@ -30,155 +30,262 @@ namespace SmsDeluge.WinForm.Views
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.tbMobile = new System.Windows.Forms.TextBox();
-            this.tbSendCount = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnStart = new System.Windows.Forms.Button();
-            this.tbMessage = new System.Windows.Forms.TextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnStop = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.gbTask = new System.Windows.Forms.GroupBox();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.uiGroupBox3 = new Sunny.UI.UIGroupBox();
+            this.gbTask = new Sunny.UI.UIFlowLayoutPanel();
+            this.uiGroupBox2 = new Sunny.UI.UIGroupBox();
+            this.tbMessage = new Sunny.UI.UITextBox();
+            this.uiGroupBox1 = new Sunny.UI.UIGroupBox();
+            this.uiMarkLabel3 = new Sunny.UI.UIMarkLabel();
+            this.uiMarkLabel2 = new Sunny.UI.UIMarkLabel();
+            this.uiMarkLabel1 = new Sunny.UI.UIMarkLabel();
+            this.tbSendInterval = new Sunny.UI.UITextBox();
+            this.tbMobile = new Sunny.UI.UITextBox();
+            this.tbSendCount = new Sunny.UI.UITextBox();
+            this.btnStart = new Sunny.UI.UISymbolButton();
+            this.btnStop = new Sunny.UI.UISymbolButton();
+            this.uiGroupBox3.SuspendLayout();
+            this.uiGroupBox2.SuspendLayout();
+            this.uiGroupBox1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // uiGroupBox3
+            // 
+            this.uiGroupBox3.Controls.Add(this.gbTask);
+            this.uiGroupBox3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiGroupBox3.Location = new System.Drawing.Point(384, 37);
+            this.uiGroupBox3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uiGroupBox3.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiGroupBox3.Name = "uiGroupBox3";
+            this.uiGroupBox3.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
+            this.uiGroupBox3.Size = new System.Drawing.Size(136, 364);
+            this.uiGroupBox3.TabIndex = 12;
+            this.uiGroupBox3.Text = "任务";
+            this.uiGroupBox3.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.uiGroupBox3.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // gbTask
+            // 
+            this.gbTask.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.gbTask.Location = new System.Drawing.Point(4, 25);
+            this.gbTask.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.gbTask.MinimumSize = new System.Drawing.Size(1, 1);
+            this.gbTask.Name = "gbTask";
+            this.gbTask.Padding = new System.Windows.Forms.Padding(2);
+            this.gbTask.ShowText = false;
+            this.gbTask.Size = new System.Drawing.Size(128, 334);
+            this.gbTask.TabIndex = 4;
+            this.gbTask.Text = "uiFlowLayoutPanel1";
+            this.gbTask.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.gbTask.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // uiGroupBox2
+            // 
+            this.uiGroupBox2.Controls.Add(this.tbMessage);
+            this.uiGroupBox2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiGroupBox2.Location = new System.Drawing.Point(4, 140);
+            this.uiGroupBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uiGroupBox2.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiGroupBox2.Name = "uiGroupBox2";
+            this.uiGroupBox2.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
+            this.uiGroupBox2.Size = new System.Drawing.Size(372, 261);
+            this.uiGroupBox2.TabIndex = 11;
+            this.uiGroupBox2.Text = "消息";
+            this.uiGroupBox2.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.uiGroupBox2.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // tbMessage
+            // 
+            this.tbMessage.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tbMessage.Font = new System.Drawing.Font("微软雅黑", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tbMessage.Location = new System.Drawing.Point(4, 24);
+            this.tbMessage.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tbMessage.MinimumSize = new System.Drawing.Size(1, 16);
+            this.tbMessage.Multiline = true;
+            this.tbMessage.Name = "tbMessage";
+            this.tbMessage.ShowScrollBar = true;
+            this.tbMessage.ShowText = false;
+            this.tbMessage.Size = new System.Drawing.Size(364, 232);
+            this.tbMessage.TabIndex = 6;
+            this.tbMessage.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.tbMessage.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // uiGroupBox1
+            // 
+            this.uiGroupBox1.Controls.Add(this.uiMarkLabel3);
+            this.uiGroupBox1.Controls.Add(this.uiMarkLabel2);
+            this.uiGroupBox1.Controls.Add(this.uiMarkLabel1);
+            this.uiGroupBox1.Controls.Add(this.tbSendInterval);
+            this.uiGroupBox1.Controls.Add(this.tbMobile);
+            this.uiGroupBox1.Controls.Add(this.tbSendCount);
+            this.uiGroupBox1.Controls.Add(this.btnStart);
+            this.uiGroupBox1.Controls.Add(this.btnStop);
+            this.uiGroupBox1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiGroupBox1.Location = new System.Drawing.Point(4, 37);
+            this.uiGroupBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uiGroupBox1.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiGroupBox1.Name = "uiGroupBox1";
+            this.uiGroupBox1.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
+            this.uiGroupBox1.Size = new System.Drawing.Size(372, 93);
+            this.uiGroupBox1.TabIndex = 10;
+            this.uiGroupBox1.Text = "设置";
+            this.uiGroupBox1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.uiGroupBox1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // uiMarkLabel3
+            // 
+            this.uiMarkLabel3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiMarkLabel3.Location = new System.Drawing.Point(8, 60);
+            this.uiMarkLabel3.Name = "uiMarkLabel3";
+            this.uiMarkLabel3.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.uiMarkLabel3.Size = new System.Drawing.Size(79, 23);
+            this.uiMarkLabel3.TabIndex = 10;
+            this.uiMarkLabel3.Text = "发送间隔";
+            this.uiMarkLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.uiMarkLabel3.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // uiMarkLabel2
+            // 
+            this.uiMarkLabel2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiMarkLabel2.Location = new System.Drawing.Point(225, 26);
+            this.uiMarkLabel2.Name = "uiMarkLabel2";
+            this.uiMarkLabel2.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.uiMarkLabel2.Size = new System.Drawing.Size(79, 23);
+            this.uiMarkLabel2.TabIndex = 9;
+            this.uiMarkLabel2.Text = "发送次数";
+            this.uiMarkLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.uiMarkLabel2.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // uiMarkLabel1
+            // 
+            this.uiMarkLabel1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiMarkLabel1.Location = new System.Drawing.Point(8, 26);
+            this.uiMarkLabel1.Name = "uiMarkLabel1";
+            this.uiMarkLabel1.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.uiMarkLabel1.Size = new System.Drawing.Size(79, 23);
+            this.uiMarkLabel1.TabIndex = 8;
+            this.uiMarkLabel1.Text = "手机号码";
+            this.uiMarkLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.uiMarkLabel1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // tbSendInterval
+            // 
+            this.tbSendInterval.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tbSendInterval.DoubleValue = 1000D;
+            this.tbSendInterval.Font = new System.Drawing.Font("微软雅黑", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tbSendInterval.IntValue = 1000;
+            this.tbSendInterval.Location = new System.Drawing.Point(89, 60);
+            this.tbSendInterval.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tbSendInterval.MinimumSize = new System.Drawing.Size(1, 16);
+            this.tbSendInterval.Name = "tbSendInterval";
+            this.tbSendInterval.ShowText = false;
+            this.tbSendInterval.Size = new System.Drawing.Size(60, 25);
+            this.tbSendInterval.TabIndex = 7;
+            this.tbSendInterval.Text = "1000";
+            this.tbSendInterval.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.tbSendInterval.Type = Sunny.UI.UITextBox.UIEditType.Integer;
+            this.tbSendInterval.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // tbMobile
             // 
-            this.tbMobile.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbMobile.Location = new System.Drawing.Point(66, 19);
+            this.tbMobile.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tbMobile.Font = new System.Drawing.Font("微软雅黑", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tbMobile.Location = new System.Drawing.Point(89, 25);
+            this.tbMobile.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tbMobile.MinimumSize = new System.Drawing.Size(1, 16);
             this.tbMobile.Name = "tbMobile";
-            this.tbMobile.Size = new System.Drawing.Size(100, 21);
-            this.tbMobile.TabIndex = 0;
+            this.tbMobile.ShowText = false;
+            this.tbMobile.Size = new System.Drawing.Size(100, 25);
+            this.tbMobile.TabIndex = 1;
+            this.tbMobile.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.tbMobile.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // tbSendCount
             // 
-            this.tbSendCount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbSendCount.Location = new System.Drawing.Point(236, 19);
+            this.tbSendCount.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tbSendCount.DoubleValue = 100D;
+            this.tbSendCount.Font = new System.Drawing.Font("微软雅黑", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tbSendCount.IntValue = 100;
+            this.tbSendCount.Location = new System.Drawing.Point(306, 25);
+            this.tbSendCount.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tbSendCount.MinimumSize = new System.Drawing.Size(1, 16);
             this.tbSendCount.Name = "tbSendCount";
-            this.tbSendCount.Size = new System.Drawing.Size(51, 21);
-            this.tbSendCount.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 23);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 12);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "手机号码";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(180, 23);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 12);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "发送次数";
+            this.tbSendCount.ShowText = false;
+            this.tbSendCount.Size = new System.Drawing.Size(60, 25);
+            this.tbSendCount.TabIndex = 5;
+            this.tbSendCount.Text = "100";
+            this.tbSendCount.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.tbSendCount.Type = Sunny.UI.UITextBox.UIEditType.Integer;
+            this.tbSendCount.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // btnStart
             // 
             this.btnStart.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnStart.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnStart.Location = new System.Drawing.Point(310, 17);
+            this.btnStart.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnStart.LightStyle = true;
+            this.btnStart.Location = new System.Drawing.Point(226, 60);
+            this.btnStart.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(54, 23);
-            this.btnStart.TabIndex = 4;
-            this.btnStart.Text = "启动";
-            this.btnStart.UseVisualStyleBackColor = true;
+            this.btnStart.RadiusSides = ((Sunny.UI.UICornerRadiusSides)((Sunny.UI.UICornerRadiusSides.LeftTop | Sunny.UI.UICornerRadiusSides.LeftBottom)));
+            this.btnStart.Size = new System.Drawing.Size(30, 25);
+            this.btnStart.Symbol = 61515;
+            this.btnStart.TabIndex = 2;
+            this.btnStart.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnStart.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
-            // 
-            // tbMessage
-            // 
-            this.tbMessage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbMessage.Location = new System.Drawing.Point(6, 20);
-            this.tbMessage.Multiline = true;
-            this.tbMessage.Name = "tbMessage";
-            this.tbMessage.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.tbMessage.Size = new System.Drawing.Size(427, 172);
-            this.tbMessage.TabIndex = 6;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.btnStop);
-            this.groupBox1.Controls.Add(this.tbSendCount);
-            this.groupBox1.Controls.Add(this.tbMobile);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.btnStart);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(439, 52);
-            this.groupBox1.TabIndex = 8;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "设置";
             // 
             // btnStop
             // 
             this.btnStop.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnStop.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnStop.Location = new System.Drawing.Point(373, 17);
+            this.btnStop.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnStop.LightStyle = true;
+            this.btnStop.Location = new System.Drawing.Point(256, 60);
+            this.btnStop.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnStop.Name = "btnStop";
-            this.btnStop.Size = new System.Drawing.Size(54, 23);
-            this.btnStop.TabIndex = 5;
-            this.btnStop.Text = "停止";
-            this.btnStop.UseVisualStyleBackColor = true;
+            this.btnStop.RadiusSides = ((Sunny.UI.UICornerRadiusSides)((Sunny.UI.UICornerRadiusSides.RightTop | Sunny.UI.UICornerRadiusSides.RightBottom)));
+            this.btnStop.Size = new System.Drawing.Size(30, 25);
+            this.btnStop.Symbol = 61516;
+            this.btnStop.TabIndex = 3;
+            this.btnStop.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnStop.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.tbMessage);
-            this.groupBox2.Location = new System.Drawing.Point(12, 70);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(439, 198);
-            this.groupBox2.TabIndex = 9;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "日志";
-            // 
-            // gbTask
-            // 
-            this.gbTask.Location = new System.Drawing.Point(13, 275);
-            this.gbTask.Name = "gbTask";
-            this.gbTask.Size = new System.Drawing.Size(438, 39);
-            this.gbTask.TabIndex = 10;
-            this.gbTask.TabStop = false;
-            this.gbTask.Text = "进度";
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(463, 324);
-            this.Controls.Add(this.gbTask);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.ClientSize = new System.Drawing.Size(525, 405);
+            this.Controls.Add(this.uiGroupBox3);
+            this.Controls.Add(this.uiGroupBox2);
+            this.Controls.Add(this.uiGroupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "MainForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.ShowRadius = false;
+            this.ShowRect = false;
+            this.ShowShadow = true;
+            this.ShowTitleIcon = true;
             this.Text = "短信压力测试";
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.ZoomScaleRect = new System.Drawing.Rectangle(15, 15, 800, 450);
+            this.uiGroupBox3.ResumeLayout(false);
+            this.uiGroupBox2.ResumeLayout(false);
+            this.uiGroupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TextBox tbMobile;
-        private System.Windows.Forms.TextBox tbSendCount;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnStart;
-        private System.Windows.Forms.TextBox tbMessage;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.GroupBox gbTask;
-        private System.Windows.Forms.Button btnStop;
+        private Sunny.UI.UIGroupBox uiGroupBox3;
+        private Sunny.UI.UIFlowLayoutPanel gbTask;
+        private Sunny.UI.UIGroupBox uiGroupBox2;
+        private Sunny.UI.UITextBox tbMessage;
+        private Sunny.UI.UIGroupBox uiGroupBox1;
+        private Sunny.UI.UIMarkLabel uiMarkLabel3;
+        private Sunny.UI.UIMarkLabel uiMarkLabel2;
+        private Sunny.UI.UIMarkLabel uiMarkLabel1;
+        private Sunny.UI.UITextBox tbSendInterval;
+        private Sunny.UI.UITextBox tbMobile;
+        private Sunny.UI.UITextBox tbSendCount;
+        private Sunny.UI.UISymbolButton btnStart;
+        private Sunny.UI.UISymbolButton btnStop;
     }
 }

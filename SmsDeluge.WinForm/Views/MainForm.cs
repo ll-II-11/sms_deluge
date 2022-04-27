@@ -1,4 +1,5 @@
 ﻿using SmsDeluge.WinForm.Services;
+using Sunny.UI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,7 +13,7 @@ using System.Windows.Forms;
 
 namespace SmsDeluge.WinForm.Views
 {
-    public partial class MainForm : Form
+    public partial class MainForm : UIForm
     {
         public MainForm()
         {
@@ -33,9 +34,15 @@ namespace SmsDeluge.WinForm.Views
                 this.tbMessage.AppendText("发送次数错误\r\n");
                 return;
             }
+            var t_interval = this.tbSendInterval.Text.Trim();
+            if (!int.TryParse(t_interval, out int interval))
+            {
+                this.tbMessage.AppendText("发送间隔错误\r\n");
+                return;
+            }
             SmsService.IsRun = true;
-            Task.Run(async ()=> {
-                await new SmsService().Send(mobile, count, this.tbMessage, this.gbTask);
+            Task.Run(async () => {
+                await new SmsService().Send(mobile, count, interval, this.tbMessage, this.gbTask);
             });
         }
 
